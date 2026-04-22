@@ -91,9 +91,21 @@ Doc Harness has two optional documents that you create only when your project ac
 
 **Example**:
 ```
-- "Never trust CSV encoding headers" — discovered 2026-03-15
-  Context: Three data imports failed because we assumed UTF-8.
-  Rule: Always sniff encoding with chardet before parsing.
+- "Zoom out before patching" — discovered 2026-04-22
+  Context: Agent spent hours fixing code that was already working;
+  the real problem was the test method (no sudo, wrong env source).
+  Rule: When patches keep failing, step back and verify the problem
+  still exists and the test is reliable before changing more code.
+  Scope: Any complex system debugging.
+
+- "The Curse of Knowledge" — discovered 2026-04-22
+  Context: A bug report assumed the recipient understood deployment
+  structure, modification history, and local-server relationships.
+  The recipient knew none of it. Second report with full context
+  got an immediate precise fix.
+  Rule: Never assume the recipient knows what you know. Provide
+  complete background in every cross-team/cross-role message.
+  Scope: All communication — bug reports, handoffs, inbox/outbox.
 ```
 
 **Not iron rules**: Iron rules are mandatory constraints ("Never commit API keys"). Philosophy is empirical wisdom ("Every time we skip tests, a bug returns in 3 days"). Iron rules live in CLAUDE.md; philosophy lives here until it proves universal enough to promote.
