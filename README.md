@@ -49,16 +49,57 @@ The agent should recognize the skill and offer to initialize Doc Harness.
 
 No slash commands needed — Kimi uses natural-language triggers. Just talk to the agent:
 
-| You say | Agent does |
-|---------|-----------|
-| *"Set up doc-harness for this project"* | Creates the 5 core documents |
-| *"Check the project docs"* | Audits documentation health + reflects on principles |
-| *"Sync the project state"* | Repairs drift, refreshes dates, registers missing files |
-| *"Save everything before compact"* | Emergency context save into documents |
-| *"Recall why we chose PostgreSQL"* | Searches registered documents and returns cited answers |
-| *"Find all docs about caching"* | File lookup across the document hierarchy |
+| You say | The Moment | Agent does |
+|---------|-----------|------------|
+| *"Set up doc-harness for this project"* | Starting a project (new or mid-flight) | Creates the 5 core documents tailored to your project |
+| *"Check the project docs"* | Regular maintenance / things feel messy | Audits file health + reflects on whether rules are being followed |
+| *"Sync the project state"* | Docs have fallen behind reality | Repairs drift: registers missing files, refreshes stale dates, triggers phase transition or archival if thresholds hit |
+| *"Save everything before compact"* | Context about to compress / session ending | Emergency save: extracts all important context into documents + runs sync |
+| *"Recall why we chose PostgreSQL"* | Can't find something / need decision history | Searches registered documents hierarchically and returns cited answers |
+| *"Find all docs about caching"* | Need to locate files by topic | File lookup across the document hierarchy |
 
 You can also manually load the skill with `/skill:doc-harness` if you want to force it.
+
+---
+
+## Optional Documents (Create When Needed)
+
+Doc Harness has two optional documents that you create only when your project actually accumulates the kind of content they hold.
+
+### PARKING_LOT.md — Deferred Items (Not Visions)
+
+**When to create**: When you have work that needs to happen *soon*, but is *blocked* by a precondition.
+
+**What goes in it**: The item, what's blocking it, the unblock condition, and when to review.
+
+**Example**:
+```
+- Deploy to production
+  Blocked by: AWS account not yet provisioned
+  Unblock when: Ops team confirms account ready
+  Review: 2026-04-25
+```
+
+**Not a vision board**: PARKING_LOT is for *near-term* work that is *temporarily* blocked. Long-term dreams ("rewrite in Rust") go in headlights' "Future Plans" instead.
+
+**How to use**: Review during sync/check. When the unblock condition is met, move the item back to CURRENT_STATUS headlights and start working.
+
+### PHILOSOPHY.md — Principles From Practice
+
+**When to create**: When you notice recurring patterns, lessons from mistakes, or principles that generalize beyond the current phase.
+
+**What goes in it**: Principles forged by this project's specific practice — "We tried X three times and Y always works better."
+
+**Example**:
+```
+- "Never trust CSV encoding headers" — discovered 2026-03-15
+  Context: Three data imports failed because we assumed UTF-8.
+  Rule: Always sniff encoding with chardet before parsing.
+```
+
+**Not iron rules**: Iron rules are mandatory constraints ("Never commit API keys"). Philosophy is empirical wisdom ("Every time we skip tests, a bug returns in 3 days"). Iron rules live in CLAUDE.md; philosophy lives here until it proves universal enough to promote.
+
+**How to use**: Review at phase transitions. Principles that survive 3+ phases can be promoted to CLAUDE.md iron rules.
 
 ---
 
