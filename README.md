@@ -1,4 +1,4 @@
-# Doc Harness for Kimi CLI
+# Doc Harness for Kimi CLI &nbsp;·&nbsp; v1.5.1
 
 [→ Full project documentation (Claude Code + Kimi versions)](https://github.com/cilidinezy-commits/doc-harness)
 
