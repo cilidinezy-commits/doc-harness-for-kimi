@@ -49,14 +49,13 @@ The agent should recognize the skill and offer to initialize Doc Harness.
 
 No slash commands needed — Kimi uses natural-language triggers. Just talk to the agent:
 
-| You say | The Moment | Agent does |
-|---------|-----------|------------|
-| *"Set up doc-harness for this project"* | Starting a project (new or mid-flight) | Creates the 5 core documents tailored to your project |
-| *"Check the project docs"* | Regular maintenance / things feel messy | Audits file health + reflects on whether rules are being followed |
-| *"Sync the project state"* | Docs have fallen behind reality | Repairs drift: registers missing files, refreshes stale dates, triggers phase transition or archival if thresholds hit |
-| *"Save everything before compact"* | Context about to compress / session ending | Emergency save: extracts all important context into documents + runs sync |
-| *"Recall why we chose PostgreSQL"* | Can't find something / need decision history | Searches registered documents hierarchically and returns cited answers |
-| *"Find all docs about caching"* | Need to locate files by topic | File lookup across the document hierarchy |
+| Command | Trigger phrase (say to Kimi) | When to use | What it does |
+|---------|-----------------------------|------------|--------------|
+| **init** | *"Set up doc-harness for this project"* | Starting a project (new or already underway) | Creates the 5 core documents tailored to your project |
+| **check** | *"Check the project docs"* | Regular maintenance; things feel messy; session ending | Audits file health + reflects on whether rules are being followed |
+| **sync** | *"Sync the project state"* | Docs have fallen behind reality; after bulk file operations; before a long pause | Repairs drift: registers missing files, refreshes stale dates, triggers phase transition or archival if thresholds hit |
+| **flush** | *"Save everything before compact"* | Context about to compress; session ending with unsaved work | Emergency save: systematically extracts all important context into documents + runs sync |
+| **recall** | *"Recall why we chose PostgreSQL"* | Can't find a previous discussion; need decision history; want a summary of what's known about X | Searches registered documents hierarchically and returns structured, source-cited answers |
 
 You can also manually load the skill with `/skill:doc-harness` if you want to force it.
 
