@@ -92,19 +92,15 @@ Doc Harness has two optional documents that you create only when your project ac
 **Example**:
 ```
 - "Zoom out before patching" — discovered 2026-04-22
-  Context: Agent spent hours fixing code that was already working;
-  the real problem was the test method (no sudo, wrong env source).
-  Rule: When patches keep failing, step back and verify the problem
-  still exists and the test is reliable before changing more code.
+  We always face "systems" that can be examined at fine detail or
+  from a broader perspective. When stuck, switch between focus and
+  distance to avoid blind tinkering that creates new problems.
   Scope: Any complex system debugging.
 
 - "The Curse of Knowledge" — discovered 2026-04-22
-  Context: A bug report assumed the recipient understood deployment
-  structure, modification history, and local-server relationships.
-  The recipient knew none of it. Second report with full context
-  got an immediate precise fix.
-  Rule: Never assume the recipient knows what you know. Provide
-  complete background in every cross-team/cross-role message.
+  Agents (human or AI) tend to assume others know what they know.
+  Never assume the recipient shares your context. Provide complete
+  background in every cross-role message.
   Scope: All communication — bug reports, handoffs, inbox/outbox.
 ```
 
